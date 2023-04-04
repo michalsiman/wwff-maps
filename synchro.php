@@ -9,7 +9,7 @@
 //
 //
 
-$mysqli = new mysqli("localhost", "root", "", "csv-to-mysql");
+$mysqli = new mysqli("localhost", "user", "pass", "csv-to-mysql");
 
 $csvFilePath = "import-template.csv";
 $file = fopen($csvFilePath, "r");

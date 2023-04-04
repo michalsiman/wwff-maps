@@ -1,5 +1,13 @@
 <?php
 // synchro wwff from csv file to mysql db
+// non-working - just as template for re-work
+
+// define db:
+//
+//
+//
+//
+//
 
 $mysqli = new mysqli("localhost", "root", "", "csv-to-mysql");
 

@@ -1,5 +1,7 @@
 <?php
-//mysql credentials 
+//
+//mysql credentials - must be changes to real credentials
+//
 $host = 'localhost';
 $port = 3306;
 $db   = 'test';

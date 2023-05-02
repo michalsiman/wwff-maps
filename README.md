@@ -1,7 +1,7 @@
 # wwff-maps
 Maps for wwff.co (Hamradio Flora & Fauna program). What this scripts doing? Generate a web page with a point on the maps with WWFF areas for each national program.
 
-db.mysql - file with a db structure (just for make a db once)
+README.md - this file
 
 statistic.php - file with a statistics (not finished)
 

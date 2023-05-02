@@ -58,7 +58,7 @@ download_file("https://wwff.co/wwff-data/wwff_directory.csv", $datovy_soubor_ces
 // fill array from local .csv file
 $csv = csv_to_array($datovy_soubor_cesta);
 
-$mysqli = new mysqli("localhost", "wwff", "FLORAifauna:2020", "wwff_maps");
+$mysqli = new mysqli("localhost", "user", "pass", "db");  // mysql db credentials
 
 $query = "truncate wwff_area";
 $result = $mysqli->query($query);

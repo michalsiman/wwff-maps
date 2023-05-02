@@ -13,7 +13,7 @@
 //
 // --------------------------------------------------------------------
 
-$mysqli = new mysqli("localhost", "wwff", "FLORAifauna:2020", "wwff_maps");
+$mysqli = new mysqli("localhost", "user", "pass", "db");  // mysql db credentials
 
 $program = htmlspecialchars($_GET['program']);
 $type = htmlspecialchars($_GET['type']);

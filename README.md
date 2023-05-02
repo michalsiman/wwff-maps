@@ -1,4 +1,5 @@
-# wwff-maps
+# WWFF-MAPS
+
 Maps for wwff.co (Hamradio Flora & Fauna program). What this scripts doing? Generate a web page with a point on the maps with WWFF areas for each national program.
 
 **README.md** - this file

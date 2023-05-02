@@ -55,7 +55,7 @@ if ($area=="awitha") $query = "SELECT * FROM wwff_area WHERE status='active' AND
 if ($area=="awouta") $query = "SELECT * FROM wwff_area WHERE status='active' AND program='".$program."' AND latitude<>'' AND longitude<>'' AND qsoCount=0";
 $result = $mysqli->query($query);
 $counter = mysqli_num_rows($result);
-if ($counter>0) echo " (".mysqli_num_rows($result)." areas - <a href='gpx_generator.php?program=".$program."&type=".$area."'>GPX file</a>) ";
+if ($counter>0) echo " (".mysqli_num_rows($result)." areas - <a href='important/gpx_generator.php?program=".$program."&type=".$area."'>GPX file</a>) ";
 if ($counter==0) echo " no records";
 //---------------------------------------------------------------------------------
 ?>

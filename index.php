@@ -1,7 +1,11 @@
 <?php
 //----------------------------------------------------------------------------------
 //ini_set('display_errors', 1);
-$mysqli = new mysqli("localhost", "user", "pass", "db");  // mysql db credentials
+
+require 'settings/db_credentials.php';
+$mysqli = new mysqli($host, $user, $pass, $db, $port);   // mysql db credentials
+$mysqli->set_charset($charset);
+
 $area = htmlspecialchars($_POST['area']);
 if($area=="") $area="all";
 $program = strtoupper(htmlspecialchars($_POST['program']));

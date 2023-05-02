@@ -13,7 +13,9 @@
 //
 // --------------------------------------------------------------------
 
-$mysqli = new mysqli("localhost", "user", "pass", "db");  // mysql db credentials
+require 'settings/db_credentials.php';
+$mysqli = new mysqli($host, $user, $pass, $db, $port);   // mysql db credentials
+$mysqli->set_charset($charset);
 
 $program = htmlspecialchars($_GET['program']);
 $type = htmlspecialchars($_GET['type']);

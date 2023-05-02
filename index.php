@@ -1,7 +1,7 @@
 <?php
 //----------------------------------------------------------------------------------
 //ini_set('display_errors', 1);
-$mysqli = new mysqli("localhost", "wwff", "FLORAifauna:2020", "wwff_maps");   // <<< mysql db credentials
+$mysqli = new mysqli("localhost", "user", "pass", "db");  // mysql db credentials
 $area = htmlspecialchars($_POST['area']);
 if($area=="") $area="all";
 $program = strtoupper(htmlspecialchars($_POST['program']));

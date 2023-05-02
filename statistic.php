@@ -1,4 +1,11 @@
 <?php
+
+//
+// this is statistic about WWFF areas - not finished yet, just some concept
+//
+//
+//
+
 echo "<h3>Statistic</h3>";
 echo "<br />";
 echo "Number of lines in db: <br />";

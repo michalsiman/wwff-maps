@@ -1,4 +1,5 @@
 <?php
+//mysql credentials 
 $host = 'localhost';
 $port = 3306;
 $db   = 'test';

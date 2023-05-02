@@ -5,43 +5,39 @@
 //
 // required parameters:
 //
-// dxcc = country code (like "OK" or "DL" ...)
+// program = program code (like "OKFF" or "DLFF" ...)
 //
-// type = 1 - all
-//        2 - only activated area
-//        3 - only non-activated area
+// type = all - all area
+//        awitha - only activated area
+//        awouta - only NON-activated area
 //
 // --------------------------------------------------------------------
 
-$search = htmlspecialchars($_GET['call']);
+$mysqli = new mysqli("localhost", "wwff", "FLORAifauna:2020", "wwff_maps");
 
-//header('Content-type: image/jpeg');
+$program = htmlspecialchars($_GET['program']);
+$type = htmlspecialchars($_GET['type']);
+
 header("Expires: 0");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
-header("Content-type: image/jpeg");
-header("Content-Disposition: attachment; filename=\"diplom-vffa-2022-$search.jpg\"");
+header("Content-type: application/gpx+xml");
+header("Content-Disposition: attachment; filename=\"".$program."-".$type."-".gmdate("YmdHi").".gpx\"");
 
-$img = imagecreatefromjpeg("img.jpg");
+echo '<?xml version="1.0" encoding="windows-1250" standalone="no" ?>'.PHP_EOL;
+echo '<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" creator="GPS Data Team ( http://www.gps-data-team.com )">'.PHP_EOL;
 
-  $txt = $search;
-  $fontFile = realpath("font.ttf");
-  $fontSize = 100;
-  $fontColor = imagecolorallocate($img, 255, 255, 255);
-  $black = imagecolorallocate($img, 0, 0, 0);
-  $angle = 0;
+if ($type=="all") $query = "SELECT * FROM wwff_area WHERE status='active' AND program='".$program."' AND latitude<>'' AND longitude<>''";
+if ($type=="awitha") $query = "SELECT * FROM wwff_area WHERE status='active' AND program='".$program."' AND latitude<>'' AND longitude<>'' AND qsoCount>0";
+if ($type=="awouta") $query = "SELECT * FROM wwff_area WHERE status='active' AND program='".$program."' AND latitude<>'' AND longitude<>'' AND qsoCount=0";
+$result = $mysqli->query($query);
+//$counter = mysqli_num_rows($result);
+while($row = $result->fetch_assoc()) {
+    echo '<wpt lon="'.$row["longitude"].'" lat="'.$row["latitude"].'"><name>'.$row["reference"].' '.$row["name"].' ('.$row["qsoCount"].'/'.$row["lastAct"].')</name></wpt>'.PHP_EOL;
+  }
 
- 
-  $whereX = 950; //vodorovna osa
-  $whereY = 1050; // svisla osa
+echo '</gpx>'.PHP_EOL;
 
-  imagettftext($img, $fontSize, $angle, $whereX, $whereY, $black, $fontFile, $txt);
-  imagejpeg($img);
-  imagedestroy($img);
-
-
-
-
-?>
+$mysqli->close();

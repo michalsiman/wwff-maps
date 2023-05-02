@@ -1,0 +1,23 @@
+h3 {
+    color: red;
+  }
+
+body {
+    overscroll-behavior-y: contain;
+    }
+
+p {
+    margin: 20px;
+}
+
+form {
+    margin: 5px;
+}
+
+.seda {
+    background: #c9c2c2;
+}
+
+@media only screen and (max-width: 600px) {
+span{display: inline;}
+    }

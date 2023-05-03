@@ -2,8 +2,18 @@
 // synchro wwff from csv file to mysql db
 
 //ini_set('display_errors', 1);
+@ini_set('zlib.output_compression',0);
+@ini_set('implicit_flush',1);
+@ob_end_clean();
+set_time_limit(0);
 ini_set('user_agent', 'My-Application/2.5');
 ini_set('memory_limit', '1024M'); // or you could use 1G
+header( 'Content-type: text/html; charset=utf-8' );
+// ----------
+
+
+echo "Syncing ... ";
+flush();
 
 function download_file($url, $path) {
 
@@ -55,6 +65,9 @@ $datovy_soubor_cesta = dirname(__FILE__) ."/data_files/wwff_directory.csv";
 // download actual .csv file from wwff.co
 download_file("https://wwff.co/wwff-data/wwff_directory.csv", $datovy_soubor_cesta);
 
+echo "csv file donwloaded ... saving to db now ... wait ... ";
+flush();
+
 // fill array from local .csv file
 $csv = csv_to_array($datovy_soubor_cesta);
 
@@ -78,5 +91,7 @@ foreach ($csv as $arr) {
 }
 
 echo "$pocet";
+
+echo " ... done!";
 
 $mysqli->close();

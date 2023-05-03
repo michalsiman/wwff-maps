@@ -37,6 +37,8 @@ if ($type=="awouta") $query = "SELECT * FROM wwff_area WHERE status='active' AND
 $result = $mysqli->query($query);
 //$counter = mysqli_num_rows($result);
 while($row = $result->fetch_assoc()) {
+    if ($row["qsoCount"]==0) $row["qsoCount"]="none";
+    if ($row["lastAct"]=="1980-01-01") $row["lastAct"]="none";
     echo '<wpt lon="'.$row["longitude"].'" lat="'.$row["latitude"].'"><name>'.$row["reference"].' '.$row["name"].' ('.$row["qsoCount"].'/'.$row["lastAct"].')</name></wpt>'.PHP_EOL;
   }
 

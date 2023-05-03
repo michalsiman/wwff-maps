@@ -13,7 +13,7 @@
 //
 // --------------------------------------------------------------------
 
-require 'settings/db_credentials.php';
+require '../settings/db_credentials.php';
 $mysqli = new mysqli($host, $user, $pass, $db, $port);   // mysql db credentials
 $mysqli->set_charset($charset);
 

@@ -73,7 +73,7 @@ if ($program!="") {
     var m = new SMap(JAK.gel("m"));
 
     m.addControl(new SMap.Control.Sync()); /* Aby mapa reagovala na změnu velikosti průhledu */
-    m.addDefaultLayer(SMap.DEF_BASE).enable(); /* Turistický podklad */
+    m.addDefaultLayer(SMap.DEF_TURIST).enable(); /* Turistický podklad */
     var mouse = new SMap.Control.Mouse(SMap.MOUSE_PAN | SMap.MOUSE_WHEEL | SMap.MOUSE_ZOOM); /* Ovládání myší */
     m.addControl(mouse);
     m.addDefaultControls();
